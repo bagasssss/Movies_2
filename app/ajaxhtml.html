@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html ng-app="ajax">
+<head>
+    <title>ajax app</title>
+    <meta charset="utf-8" />
+    <script src="/Scripts/jquery-1.10.2.js"></script>
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/angular.js"></script>
+    <script src="/Scripts/angular-resource.js"></script>
+    <script src="/Scripts/angular-route.js"></script>
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <script src="Controllers/Controllers.js"></script>
+    <script src="Services/Services.js"></script>
+    <script>
+
+        angular.module("ajax", ["app.controllers", "app.services", "ngResource", "ngRoute"])
+
+        .config(function ($routeProvider, $locationProvider) {
+            $locationProvider.html5Mode({
+                enabled: true,
+                requireBase: false
+            });
+            $routeProvider.when("/list", {
+                templateUrl: "/app/list.html"
+            });
+
+            $routeProvider.when("/add", {
+                templateUrl: "/app/AddMovie.html"
+            });
+            $routeProvider.otherwise({
+                templateUrl: "/app/list.html"
+            })
+        })
+    </script>
+</head>
+<body>
+
+    <div class="container" ng-controller="dataController">
+        <div class="panel panel-default">
+            <div ng-view></div>
+        </div>
+    </div>
+
+</body>
+</html>
